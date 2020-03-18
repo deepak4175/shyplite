@@ -1,5 +1,6 @@
 package baseClass;
 
-public class CommonMethod {
-
+class CommonMethod extends Mainclass{
+	
+	
 }
