@@ -87,8 +87,8 @@ public class Mainclass {
 	}
 	void propertysetup() throws IOException
 	{
-		FileInputStream ob1=new FileInputStream("D:\\commontest\\Config\\config.properties");
-		FileInputStream ob2=new FileInputStream("D:\\commontest\\Config\\Props.properties");
+		FileInputStream ob1=new FileInputStream("D:\\baseProject\\src\\main\\resources\\propertiesFile\\config.properties");
+		FileInputStream ob2=new FileInputStream("D:\\baseProject\\src\\main\\resources\\propertiesFile\\props.properties");
 		prop.load(ob2);
 		config.load(ob1);		
 	}
