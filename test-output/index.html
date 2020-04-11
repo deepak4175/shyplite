@@ -129,8 +129,12 @@
                   </a> <!-- loginApplication -->
                   <span class="method-name">loginApplication</span>
                   <div class="stack-trace">java.lang.NullPointerException
-	at baseClass.CommonMethod.typeTextOnEditBox(CommonMethod.java:14)
-	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:36)
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:106)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
+	at baseClass.CommonMethod.waitForObjectVisible(CommonMethod.java:51)
+	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:39)
 	at setupEnvironment.Test_Loginapplication.loginApplication(Test_Loginapplication.java:13)
 ... Removed 25 stack frames
 </div> <!-- stack-trace -->
@@ -195,12 +199,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginApplication')
 data.setCell(0, 2, 'setupEnvironment.Test_Loginapplication')
-data.setCell(0, 3, 21);
+data.setCell(0, 3, 158);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 21 ms</span>
+              <span class="suite-total-time">Total running time: 158 ms</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->

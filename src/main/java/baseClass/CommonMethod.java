@@ -11,7 +11,8 @@ public class CommonMethod extends Mainclass{
 	public static StackTraceElement str;
 	public static boolean typeTextOnEditBox(WebElement objectAddress,String input)
 	{  boolean opt=true;
-	   String methodName=str.getMethodName();
+	   String methodName="typeTextOnEditBox";
+			   //str.getMethodName();
 		try {  System.out.println("Step : "+methodName+" execution started");
 				//driver.findElement(By.xpath(username)).sendKeys(input);
 				objectAddress.sendKeys(input);
@@ -27,7 +28,8 @@ public class CommonMethod extends Mainclass{
 	}
 	public static boolean clickOn(WebElement objectAddress)
 	{  boolean opt=true;
-	   String methodName=str.getMethodName();
+	   String methodName="clickOn";
+			   //str.getMethodName();
 		try {  System.out.println("Step : "+methodName+" execution started");
 				//driver.findElement(By.xpath(loginButton)).click();
 		        objectAddress.click();
@@ -44,7 +46,8 @@ public class CommonMethod extends Mainclass{
 	public static boolean waitForObjectVisible(WebElement objectAddress,int timeOutInSeconds)
 	{
 		 boolean opt=true;
-		 String methodName=str.getMethodName();
+		 String methodName="waitForObjectVisible";
+				 //str.getMethodName();
 		 wait=new WebDriverWait(driver, timeOutInSeconds);
 			try {  System.out.println("Step : "+methodName+" execution started");
 			       wait.until(ExpectedConditions.visibilityOf(objectAddress));

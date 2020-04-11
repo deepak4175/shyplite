@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Apr 09 00:15:45 IST 2020</td>
+<td>Started on:</td><td>Sun Apr 12 00:01:50 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (72 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (198 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,13 +77,21 @@ function toggleAllBoxes() {
 <tr>
 <td title='setupEnvironment.Test_Loginapplication.loginApplication()'><b>loginApplication</b><br>Test class: setupEnvironment.Test_Loginapplication</td>
 <td><div><pre>java.lang.NullPointerException
-	at baseClass.CommonMethod.typeTextOnEditBox(CommonMethod.java:14)
-	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:36)
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:106)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
+	at baseClass.CommonMethod.waitForObjectVisible(CommonMethod.java:51)
+	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:39)
 	at setupEnvironment.Test_Loginapplication.loginApplication(Test_Loginapplication.java:13)
-... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace473581465", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace473581465'><pre>java.lang.NullPointerException
-	at baseClass.CommonMethod.typeTextOnEditBox(CommonMethod.java:14)
-	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:36)
+... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2619171", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2619171'><pre>java.lang.NullPointerException
+	at java.util.Objects.requireNonNull(Unknown Source)
+	at org.openqa.selenium.support.ui.FluentWait.&lt;init&gt;(FluentWait.java:106)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.WebDriverWait.&lt;init&gt;(WebDriverWait.java:45)
+	at baseClass.CommonMethod.waitForObjectVisible(CommonMethod.java:51)
+	at setupPages.OR_LoginPage.logintoApplication(OR_LoginPage.java:39)
 	at setupEnvironment.Test_Loginapplication.loginApplication(Test_Loginapplication.java:13)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
