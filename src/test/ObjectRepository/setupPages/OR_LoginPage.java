@@ -32,7 +32,7 @@ public class OR_LoginPage extends Mainclass {
 		PageFactory.initElements(driver,OR_LoginPage.class);
 	}
 	public static boolean logintoApplication()
-	{  boolean finalresult=true;   
+	{  boolean finalresult=false;   
 	   boolean inp1=CommonMethod.typeTextOnEditBox(username, Mainclass.config.getProperty("username"));	   
 	   boolean inp2=CommonMethod.typeTextOnEditBox(password, Mainclass.config.getProperty("password"));
 	   boolean inp3=CommonMethod.clickOn(LoginButton);
@@ -40,7 +40,7 @@ public class OR_LoginPage extends Mainclass {
 	   boolean inp5=CommonMethod.clickOn(NewApplicationButton);
 	   if(inp1==true&&inp2==true&&inp3==true&& inp4==true &&inp5==true)
 	   {
-		   finalresult=false;
+		   finalresult=true;
 	   }
 	   return finalresult;
 	}
