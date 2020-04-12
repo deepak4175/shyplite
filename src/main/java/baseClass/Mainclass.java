@@ -15,6 +15,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
@@ -37,9 +39,11 @@ public class Mainclass {
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
 	@Parameters("browsername")
-	@BeforeClass
+	@BeforeSuite
 	public  void setup(String browsername) throws IOException
-	{
+	{ 
+		//String browsername="chrome";
+		System.out.println("setup method started");
 		
 		if(browsername.equalsIgnoreCase("chrome"))
 		{
@@ -112,11 +116,16 @@ public class Mainclass {
 	}*/
 	
 
-	@AfterTest
+    @AfterTest
 	void teardown()
 	{
 		driver.close();
 	}
+	/*public static void main(String args[]) throws IOException
+	{
+		Mainclass ob1=new Mainclass();
+		ob1.setup();
+	}*/
 	
 	
 

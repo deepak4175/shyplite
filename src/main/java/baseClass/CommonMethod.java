@@ -8,13 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class CommonMethod extends Mainclass{
-	public static StackTraceElement str;
+	//public static StackTraceElement str;
 	public static boolean typeTextOnEditBox(WebElement objectAddress,String input)
 	{  boolean opt=true;
-	   String methodName="typeTextOnEditBox";
-			   //str.getMethodName();
+	   String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 		try {  System.out.println("Step : "+methodName+" execution started");
-				//driver.findElement(By.xpath(username)).sendKeys(input);
 				objectAddress.sendKeys(input);
 				System.out.println("Step : "+methodName+" executed ssuccesfully");
 				return opt;
@@ -28,8 +26,7 @@ public class CommonMethod extends Mainclass{
 	}
 	public static boolean clickOn(WebElement objectAddress)
 	{  boolean opt=true;
-	   String methodName="clickOn";
-			   //str.getMethodName();
+	   String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 		try {  System.out.println("Step : "+methodName+" execution started");
 				//driver.findElement(By.xpath(loginButton)).click();
 		        objectAddress.click();
@@ -46,8 +43,7 @@ public class CommonMethod extends Mainclass{
 	public static boolean waitForObjectVisible(WebElement objectAddress,int timeOutInSeconds)
 	{
 		 boolean opt=true;
-		 String methodName="waitForObjectVisible";
-				 //str.getMethodName();
+		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 		 wait=new WebDriverWait(driver, timeOutInSeconds);
 			try {  System.out.println("Step : "+methodName+" execution started");
 			       wait.until(ExpectedConditions.visibilityOf(objectAddress));
