@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="19914" started-at="2020-04-12T13:35:47Z" finished-at="2020-04-12T13:36:07Z">
+  <suite name="Suite" duration-ms="37635" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:27:20Z">
     <groups>
     </groups>
-    <test name="Test" duration-ms="19914" started-at="2020-04-12T13:35:47Z" finished-at="2020-04-12T13:36:07Z">
-      <class name="setupEnvironment.Test_Loginapplication">
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:setupEnvironment.Test_Loginapplication@57fffcd7]" name="setup" is-config="true" duration-ms="11116" started-at="2020-04-12T13:35:36Z" finished-at="2020-04-12T13:35:47Z">
+    <test name="DefaultTest" duration-ms="37635" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:27:20Z">
+      <class name="baseClass.Mainclass">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:baseClass.Mainclass@3578436e]" name="setup" is-config="true" duration-ms="8201" started-at="2020-04-16T01:26:34Z" finished-at="2020-04-16T01:26:43Z">
           <params>
             <param index="0">
               <value>
@@ -18,11 +18,21 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@57fffcd7]" name="loginApplication" duration-ms="19892" started-at="2020-04-12T13:35:47Z" finished-at="2020-04-12T13:36:07Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@3578436e]" name="teardown" is-config="true" duration-ms="2415" started-at="2020-04-16T01:27:21Z" finished-at="2020-04-16T01:27:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- baseClass.Mainclass -->
+      <class name="setupEnvironment.Test_Loginapplication">
+        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="loginApplication" duration-ms="16456" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:26:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginApplication -->
+        <test-method status="PASS" signature="selectLoginUser()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="selectLoginUser" duration-ms="21142" started-at="2020-04-16T01:26:59Z" depends-on-methods="setupEnvironment.Test_Loginapplication.loginApplication" finished-at="2020-04-16T01:27:20Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectLoginUser -->
       </class> <!-- setupEnvironment.Test_Loginapplication -->
-    </test> <!-- Test -->
+    </test> <!-- DefaultTest -->
   </suite> <!-- Suite -->
 </testng-results>

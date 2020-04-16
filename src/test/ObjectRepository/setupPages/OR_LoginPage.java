@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeTest;
 
 import baseClass.Mainclass;
-import baseClass.CommonMethod;
+import utilityClass.CommonMethod;
 
 public class OR_LoginPage extends Mainclass {
 	
@@ -31,7 +31,14 @@ public class OR_LoginPage extends Mainclass {
 	@FindBy(xpath="//input[@placeholder='Search Salesforce']")
 	static WebElement SearchBox;
 	
-	//@BeforeTest		
+	@FindBy(xpath="//input[@placeholder='Search Setup']")
+	static WebElement UserInputBox;
+	
+	@FindBy(xpath="//td[@id='topButtonRow']//input[@title='Login']")
+	static WebElement SetupUserLoginButton;
+	
+	
+	
 	public static void OR_setupLoginPage()
 	{   System.out.println("page object initialize");
 		PageFactory.initElements(driver,OR_LoginPage.class);
@@ -49,10 +56,57 @@ public class OR_LoginPage extends Mainclass {
 		   finalresult=true;
 	   }
 	   return finalresult;
-	}
+	  }
+	   public static boolean navigateToSetup()
+	  {
+		boolean inp=CommonMethod.navigate(config.getProperty("setupURL"));
+		return inp;
+		 
+	  }
+	   
+	  public static boolean logInThroughUser(String input)
+	  {  boolean opt=true;
+		  try {
+			    boolean inp=CommonMethod.waitForObjectVisible(UserInputBox, 40);
+			    if(inp==true)
+			    {
+				  CommonMethod.typeTextOnEditBox(UserInputBox, input);
+				  String UserXpath="//div[contains(text(),'"+input+"')]";
+				  WebElement objectXpath=CommonMethod.findSingleElement(UserXpath);
+				  boolean inp2=CommonMethod.waitForObjectVisible(objectXpath, 20);
+				  if(inp2==true)
+				  {
+					 CommonMethod.clickOn(objectXpath);
+					  String UserLoginframeXpath="//iframe[contains(@title,'"+input+"')]";
+					  WebElement Frameloded=CommonMethod.findSingleElement(UserLoginframeXpath);
+					  boolean inp4=CommonMethod.waitForObjectVisible(Frameloded, 40);
+					  if(inp4==true)
+					  {
+						  CommonMethod.switchToFramebyxpath(Frameloded);
+						  boolean inp6=CommonMethod.waitForObjectVisible(SetupUserLoginButton, 40);
+						  if(inp6==true)
+						  {  CommonMethod.clickOn(SetupUserLoginButton);
+						     CommonMethod.waitForObjectVisible(SearchBox, 40);
+						  }
+					  }
+				  }
+			    }
+		  	  }
+				  			    
+			catch(Exception e)
+			{
+				opt=false;
+			}
+		    return opt;
+		 }
+		  
+		      
+		  
+	  
+	
 	  
 	   
-	   
+	    
         
 	}
 	

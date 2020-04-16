@@ -11,11 +11,18 @@ public class Test_Loginapplication extends Mainclass {
 	@Test
 	void loginApplication()
 	{   
-	     //OR_LoginPage login=new OR_LoginPage();
+	   
 		OR_LoginPage.OR_setupLoginPage();
 		boolean opt=OR_LoginPage.logintoApplication();
-		Assert.assertEquals(opt, true);
+		softAssert.assertEquals(opt, true);
+		boolean opt1=OR_LoginPage.navigateToSetup();
+		softAssert.assertEquals(opt1, true);
 		
 	}
-
+	@Test(dependsOnMethods= {"loginApplication"})
+	void selectLoginUser()
+	{
+		boolean opt=OR_LoginPage.logInThroughUser(config.getProperty("salesUsername"));
+		softAssert.assertEquals(opt, true);
+	}
 }
