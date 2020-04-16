@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test thread-count="5" name="Test(failed)">
-    <parameter name="browsername" value="chrome"/>
+  <parameter name="browsername" value="chrome"/>
+  <listeners>
+    <listener class-name="utilityClass.ListenerClass"/>
+  </listeners>
+  <test thread-count="5" name="DefaultTest(failed)">
     <classes>
       <class name="setupEnvironment.Test_Loginapplication">
         <methods>
           <include name="loginApplication"/>
+          <include name="setup"/>
+          <include name="selectLoginUser"/>
         </methods>
       </class> <!-- setupEnvironment.Test_Loginapplication -->
     </classes>
-  </test> <!-- Test(failed) -->
+  </test> <!-- DefaultTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

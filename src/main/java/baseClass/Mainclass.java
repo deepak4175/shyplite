@@ -13,8 +13,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
@@ -37,14 +40,16 @@ public class Mainclass {
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
 	@Parameters("browsername")
-	@BeforeClass
+	@BeforeSuite
 	public  void setup(String browsername) throws IOException
-	{
+	{ 
+		//String browsername="chrome";
+		System.out.println("setup method started");
 		
 		if(browsername.equalsIgnoreCase("chrome"))
 		{
 		propertysetup();
-		System.out.println("value: "+config.getProperty("Chromedriver"));
+		//System.out.println("value: "+config.getProperty("Chromedriver"));
 		System.setProperty("webdriver.chrome.driver", config.getProperty("Chromedriver"));
 		driver=new ChromeDriver();
 		System.out.println("chromedriver set");
@@ -92,31 +97,18 @@ public class Mainclass {
 		prop.load(ob2);
 		config.load(ob1);		
 	}
-	/*static {
-		//System.setProperty("webdriver.chrome.driver", "D:\\commontest\\src\\main\\java\\resources\\chromedriver.exe");
-		// driver=new ChromeDriver();	
-		 driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		 driver.manage().window().maximize();
-		 
-		// WebDriverWait wait = new WebDriverWait(driver, 10);
-		 
-		
-	}*/
 	
-	/*@BeforeTest
-	public static WebDriverWait explicitWait()
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		return wait;
-		
-	}*/
-	
-
-	@AfterTest
+	@AfterSuite
 	void teardown()
 	{
+		System.out.println("driver close");
 		driver.close();
 	}
+	/*public static void main(String args[]) throws IOException
+	{
+		Mainclass ob1=new Mainclass();
+		ob1.setup();
+	}*/
 	
 	
 
