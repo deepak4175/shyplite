@@ -20,9 +20,10 @@ public class Test_Loginapplication extends Mainclass {
 		
 	}
 	@Test(dependsOnMethods= {"loginApplication"})
-	void selectLoginUser()
+	void selectLoginUser() throws InterruptedException
 	{
 		boolean opt=OR_LoginPage.logInThroughUser(config.getProperty("salesUsername"));
 		softAssert.assertEquals(opt, true);
 	}
 }
+

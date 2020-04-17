@@ -55,7 +55,7 @@ public class Mainclass {
 		System.out.println("chromedriver set");
 		
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);  
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
 	    driver.get("https://hfclcorp--hfcuat.cs76.my.salesforce.com/");
 	    
 		}else
@@ -92,8 +92,8 @@ public class Mainclass {
 	}
 	void propertysetup() throws IOException
 	{
-		FileInputStream ob1=new FileInputStream("D:\\baseProject\\src\\main\\resources\\propertiesFile\\config.properties");
-		FileInputStream ob2=new FileInputStream("D:\\baseProject\\src\\main\\resources\\propertiesFile\\props.properties");
+		FileInputStream ob1=new FileInputStream("D:\\baseProject\\MainResources\\propertiesFile\\config.properties");
+		FileInputStream ob2=new FileInputStream("D:\\baseProject\\MainResources\\propertiesFile\\props.properties");
 		prop.load(ob2);
 		config.load(ob1);		
 	}

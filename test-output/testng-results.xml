@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="37635" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:27:20Z">
+  <suite name="Suite" duration-ms="46466" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:47:29Z">
     <groups>
     </groups>
-    <test name="DefaultTest" duration-ms="37635" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:27:20Z">
+    <test name="DefaultTest" duration-ms="46466" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:47:29Z">
       <class name="baseClass.Mainclass">
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:baseClass.Mainclass@3578436e]" name="setup" is-config="true" duration-ms="8201" started-at="2020-04-16T01:26:34Z" finished-at="2020-04-16T01:26:43Z">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:baseClass.Mainclass@3578436e]" name="setup" is-config="true" duration-ms="7747" started-at="2020-04-16T09:46:34Z" finished-at="2020-04-16T09:46:42Z">
           <params>
             <param index="0">
               <value>
@@ -18,17 +18,17 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@3578436e]" name="teardown" is-config="true" duration-ms="2415" started-at="2020-04-16T01:27:21Z" finished-at="2020-04-16T01:27:23Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@3578436e]" name="teardown" is-config="true" duration-ms="2307" started-at="2020-04-16T09:47:29Z" finished-at="2020-04-16T09:47:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
       </class> <!-- baseClass.Mainclass -->
       <class name="setupEnvironment.Test_Loginapplication">
-        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="loginApplication" duration-ms="16456" started-at="2020-04-16T01:26:43Z" finished-at="2020-04-16T01:26:59Z">
+        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="loginApplication" duration-ms="15673" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:46:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginApplication -->
-        <test-method status="PASS" signature="selectLoginUser()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="selectLoginUser" duration-ms="21142" started-at="2020-04-16T01:26:59Z" depends-on-methods="setupEnvironment.Test_Loginapplication.loginApplication" finished-at="2020-04-16T01:27:20Z">
+        <test-method status="PASS" signature="selectLoginUser()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="selectLoginUser" duration-ms="30745" started-at="2020-04-16T09:46:58Z" depends-on-methods="setupEnvironment.Test_Loginapplication.loginApplication" finished-at="2020-04-16T09:47:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectLoginUser -->
