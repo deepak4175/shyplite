@@ -60,6 +60,21 @@ public class CommonMethod extends Mainclass{
 				return opt;
 				}
 	}
+	public static WebElement waitForObjectVisible(String objectAddress,int timeOutInSeconds)
+	{    WebElement opt=null;
+		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
+		 wait=new WebDriverWait(driver, timeOutInSeconds);
+			try {  System.out.println("Step : "+methodName+" execution started");
+			       opt=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectAddress)));
+			       System.out.println("Step : "+methodName+" executed ssuccesfully");
+			       return opt;
+				}
+			catch(Exception e){
+				//opt=false;
+				System.out.println("Step : "+methodName+" Failed due to : "+e);
+				return opt;
+				}
+	}
 	//navigate to URL
 	public static boolean navigate(String URL)
 	{

@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="3" passed="2">
+<testng-results skipped="0" failed="0" ignored="2" total="5" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="46466" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:47:29Z">
+  <suite name="Suite" duration-ms="85444" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:17:22Z">
     <groups>
     </groups>
-    <test name="DefaultTest" duration-ms="46466" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:47:29Z">
+    <test name="DefaultTest" duration-ms="59" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:15:57Z">
+      <class name="setupPages.OR_LoginPage">
+        <test-method status="PASS" signature="OR_setupLoginPage()[pri:0, instance:setupPages.OR_LoginPage@544a2ea6]" name="OR_setupLoginPage" is-config="true" duration-ms="47" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:15:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- OR_setupLoginPage -->
+        <test-method status="PASS" signature="intiatepage()[pri:0, instance:setupPages.UserHomeScreen@2e3fc542]" name="intiatepage" is-config="true" duration-ms="2" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:15:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- intiatepage -->
+      </class> <!-- setupPages.OR_LoginPage -->
+    </test> <!-- DefaultTest -->
+    <test name="MainFlow" duration-ms="85319" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:17:22Z">
       <class name="baseClass.Mainclass">
-        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:baseClass.Mainclass@3578436e]" name="setup" is-config="true" duration-ms="7747" started-at="2020-04-16T09:46:34Z" finished-at="2020-04-16T09:46:42Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@7276c8cd]" name="teardown" is-config="true" duration-ms="2396" started-at="2020-04-22T05:17:23Z" finished-at="2020-04-22T05:17:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- baseClass.Mainclass -->
+      <class name="setupEnvironment.Test_Loginapplication">
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:setupEnvironment.Test_Loginapplication@52525845]" name="setup" is-config="true" duration-ms="7764" started-at="2020-04-22T05:15:49Z" finished-at="2020-04-22T05:15:57Z">
           <params>
             <param index="0">
               <value>
@@ -18,21 +36,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@3578436e]" name="teardown" is-config="true" duration-ms="2307" started-at="2020-04-16T09:47:29Z" finished-at="2020-04-16T09:47:31Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- baseClass.Mainclass -->
-      <class name="setupEnvironment.Test_Loginapplication">
-        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="loginApplication" duration-ms="15673" started-at="2020-04-16T09:46:42Z" finished-at="2020-04-16T09:46:58Z">
+        <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@52525845]" name="loginApplication" duration-ms="16024" started-at="2020-04-22T05:15:57Z" finished-at="2020-04-22T05:16:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginApplication -->
-        <test-method status="PASS" signature="selectLoginUser()[pri:0, instance:setupEnvironment.Test_Loginapplication@706a04ae]" name="selectLoginUser" duration-ms="30745" started-at="2020-04-16T09:46:58Z" depends-on-methods="setupEnvironment.Test_Loginapplication.loginApplication" finished-at="2020-04-16T09:47:29Z">
+        <test-method status="PASS" signature="selectLoginUser()[pri:1, instance:setupEnvironment.Test_Loginapplication@52525845]" name="selectLoginUser" duration-ms="66210" started-at="2020-04-22T05:16:13Z" depends-on-methods="setupEnvironment.Test_Loginapplication.loginApplication" finished-at="2020-04-22T05:17:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- selectLoginUser -->
+        <test-method status="PASS" signature="selectproject()[pri:2, instance:setupEnvironment.Test_Loginapplication@52525845]" name="selectproject" duration-ms="3038" started-at="2020-04-22T05:17:19Z" finished-at="2020-04-22T05:17:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- selectproject -->
       </class> <!-- setupEnvironment.Test_Loginapplication -->
-    </test> <!-- DefaultTest -->
+    </test> <!-- MainFlow -->
   </suite> <!-- Suite -->
 </testng-results>

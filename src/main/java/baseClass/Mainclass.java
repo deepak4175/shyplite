@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;		
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -32,11 +33,12 @@ public class Mainclass {
 	public static WebDriverWait wait;
 	//public CommonMethod commonMethod;
 	public static SoftAssert softAssert=new SoftAssert();
-	public static Properties props=new Properties();
+	//public static Properties props=new Properties();
 	public static Cell cell;	
-	static FileInputStream excelPath;
-	static XSSFWorkbook workbook;
-	static XSSFSheet worksheet;
+	public static FileInputStream excelPath;
+	public static XSSFWorkbook workbook;
+	public static XSSFSheet worksheet;
+	
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
 	@Parameters("browsername")
@@ -49,9 +51,11 @@ public class Mainclass {
 		if(browsername.equalsIgnoreCase("chrome"))
 		{
 		propertysetup();
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--disable-notifications");
 		//System.out.println("value: "+config.getProperty("Chromedriver"));
 		System.setProperty("webdriver.chrome.driver", config.getProperty("Chromedriver"));
-		driver=new ChromeDriver();
+		driver=new ChromeDriver(options);
 		System.out.println("chromedriver set");
 		
 		driver.manage().window().maximize();
@@ -92,8 +96,8 @@ public class Mainclass {
 	}
 	void propertysetup() throws IOException
 	{
-		FileInputStream ob1=new FileInputStream("D:\\baseProject\\MainResources\\propertiesFile\\config.properties");
-		FileInputStream ob2=new FileInputStream("D:\\baseProject\\MainResources\\propertiesFile\\props.properties");
+		FileInputStream ob1=new FileInputStream("D:\\baseProject\\src\\main\\MainResources\\propertiesFile\\config.properties");
+		FileInputStream ob2=new FileInputStream("D:\\baseProject\\src\\main\\MainResources\\propertiesFile\\props.properties");
 		prop.load(ob2);
 		config.load(ob1);		
 	}
@@ -103,6 +107,11 @@ public class Mainclass {
 	{
 		System.out.println("driver close");
 		driver.close();
+	}
+	
+	public static String functionName()
+	{
+		return new Object() {}.getClass().getEnclosingMethod().getName();
 	}
 	/*public static void main(String args[]) throws IOException
 	{

@@ -18,7 +18,7 @@ public class UtilityMethods extends Mainclass {
 	{
 		try {
 		File srcLocation=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	 	FileUtils.copyFile(srcLocation, new File("D:\\baseProject\\src\\test\\resources\\screenshots\\"+filename+".png"));
+	 	FileUtils.copyFile(srcLocation, new File("D:\\baseProject\\src\\test\\resources\\screenshots"+filename+".png"));
 	 	}
 		catch(IOException e) {
 			System.out.println("unable to take screenshot");
