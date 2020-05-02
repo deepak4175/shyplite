@@ -11,6 +11,7 @@
 	<classpathentry kind="src" path="src/main/MainResources"/>
 	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
@@ -25,6 +26,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/deepak.kumar/Downloads/chromedriver/freemarker-2.3.23.jar"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/apache-freemarker-2.3.30-bin/apache-freemarker-2.3.30-bin/freemarker.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
