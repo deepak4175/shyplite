@@ -39,9 +39,5 @@ public class DataProviderFromExcel {
 	return output;
 	}
 	
-	void writeExcel()
-	{
-		
-	}
 	
 	}

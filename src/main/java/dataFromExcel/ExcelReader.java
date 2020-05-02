@@ -7,20 +7,18 @@ import java.io.IOException;
 import java.util.Calendar;
 
 import org.apache.poi.common.usermodel.HyperlinkType;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.util.HSSFColor;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
 import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFHyperlink;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -365,7 +363,7 @@ public class ExcelReader {
 			
 		CellStyle style = workbook.createCellStyle();
 		style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex());
-		//style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		
 		sheet=workbook.getSheetAt(index);
 		
@@ -408,10 +406,10 @@ public class ExcelReader {
 		sheet=workbook.getSheet(sheetName);
 		XSSFCellStyle style = workbook.createCellStyle();
 		style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex());
-		XSSFCreationHelper createHelper = workbook.getCreationHelper();
-		//style.setFillPattern(HSSFCellStyle.NO_FILL);
+		//XSSFCreationHelper createHelper = workbook.getCreationHelper();
+		style.setFillPattern(FillPatternType.NO_FILL);
 		
-	    
+		
 	
 		for(int i =0;i<getRowCount(sheetName);i++){
 			row=sheet.getRow(i);	
