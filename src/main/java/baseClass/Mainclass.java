@@ -54,7 +54,7 @@ public class Mainclass {
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		//System.out.println("value: "+config.getProperty("Chromedriver"));
-		System.setProperty("webdriver.chrome.driver", config.getProperty("Chromedriver"));
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\chromedriver.exe");
 		driver=new ChromeDriver(options);
 		System.out.println("chromedriver set");
 		
@@ -66,7 +66,7 @@ public class Mainclass {
 		if(browsername.equalsIgnoreCase("firefox"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.gecko.driver", "D:\\commontest\\src\\main\\java\\resources\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\geckodriver.exe");
 		driver=new FirefoxDriver();
 		System.out.println("firefox  set");
 		
@@ -77,7 +77,7 @@ public class Mainclass {
 		if(browsername.equalsIgnoreCase("internetExproler"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.ie.driver", "D:\\commontest\\src\\main\\java\\resources\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\IEDriverServer.exe");
 		driver=new InternetExplorerDriver();
 		System.out.println("ie set");
 		
@@ -96,8 +96,8 @@ public class Mainclass {
 	}
 	void propertysetup() throws IOException
 	{
-		FileInputStream ob1=new FileInputStream("D:\\baseProject\\src\\main\\MainResources\\propertiesFile\\config.properties");
-		FileInputStream ob2=new FileInputStream("D:\\baseProject\\src\\main\\MainResources\\propertiesFile\\props.properties");
+		FileInputStream ob1=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\MainResources\\propertiesFile\\config.properties");
+		FileInputStream ob2=new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\MainResources\\propertiesFile\\props.properties");
 		prop.load(ob2);
 		config.load(ob1);		
 	}

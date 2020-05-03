@@ -13,7 +13,7 @@ import baseClass.Mainclass;
 
 public class ListenerClass implements ITestListener {
 	
-	ExtentReports reports=ExtentReportClass.createInstance("D:\\baseProject\\src\\test\\resources\\testOutput\\"+UtilityMethods.extentReportName()+".html");
+	ExtentReports reports=ExtentReportClass.createInstance(System.getProperty("user.dir")+"\\src\\test\\resources\\testOutput\\"+UtilityMethods.extentReportName()+".html");
 
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
