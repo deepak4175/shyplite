@@ -4,6 +4,7 @@
   </reporter-output>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -15,6 +16,8 @@
 
 
 =======
+=======
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
   <suite name="Suite" duration-ms="32224" started-at="2020-05-04T00:40:52 IST" finished-at="2020-05-04T00:41:24 IST">
@@ -30,6 +33,9 @@
       <class name="setupPages.UserHomeScreen">
         <test-method status="PASS" signature="intiatepage()[pri:0, instance:setupPages.UserHomeScreen@1176dcec]" name="intiatepage" is-config="true" duration-ms="1" started-at="2020-05-04T00:40:52 IST" finished-at="2020-05-04T00:40:52 IST">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
+=======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
@@ -40,9 +46,15 @@
     </test> <!-- DefaultTest -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <test name="MainFlow" duration-ms="98247" started-at="2020-05-09T17:32:37Z" finished-at="2020-05-09T17:34:16Z">
       <class name="baseClass.Mainclass">
         <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@10dba097]" name="teardown" is-config="true" duration-ms="2412" started-at="2020-05-09T17:34:16Z" finished-at="2020-05-09T17:34:19Z">
+=======
+    <test name="MainFlow" duration-ms="31864" started-at="2020-05-04T00:40:52 IST" finished-at="2020-05-04T00:41:24 IST">
+      <class name="baseClass.Mainclass">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:baseClass.Mainclass@3ffcd140]" name="teardown" is-config="true" duration-ms="4281" started-at="2020-05-04T00:41:25 IST" finished-at="2020-05-04T00:41:29 IST">
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
     <test name="MainFlow" duration-ms="31864" started-at="2020-05-04T00:40:52 IST" finished-at="2020-05-04T00:41:24 IST">
       <class name="baseClass.Mainclass">
@@ -60,7 +72,11 @@
       <class name="setupEnvironment.Test_Loginapplication">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:setupEnvironment.Test_Loginapplication@1f021e6c]" name="setup" is-config="true" duration-ms="8906" started-at="2020-05-09T17:32:28Z" finished-at="2020-05-09T17:32:37Z">
+=======
+        <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:setupEnvironment.Test_Loginapplication@58134517]" name="setup" is-config="true" duration-ms="12733" started-at="2020-05-04T00:40:39 IST" finished-at="2020-05-04T00:40:52 IST">
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
         <test-method status="PASS" signature="setup(java.lang.String)[pri:0, instance:setupEnvironment.Test_Loginapplication@58134517]" name="setup" is-config="true" duration-ms="12733" started-at="2020-05-04T00:40:39 IST" finished-at="2020-05-04T00:40:52 IST">
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
@@ -79,6 +95,7 @@
         </test-method> <!-- setup -->
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@1f021e6c]" name="loginApplication" duration-ms="23741" started-at="2020-05-09T17:32:37Z" finished-at="2020-05-09T17:33:01Z">
           <reporter-output>
           </reporter-output>
@@ -91,6 +108,8 @@
 =======
 =======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
+=======
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
         <test-method status="PASS" signature="loginApplication()[pri:0, instance:setupEnvironment.Test_Loginapplication@58134517]" name="loginApplication" duration-ms="17073" started-at="2020-05-04T00:40:52 IST" finished-at="2020-05-04T00:41:09 IST">
           <reporter-output>
           </reporter-output>
@@ -101,6 +120,9 @@
         </test-method> <!-- selectLoginUser -->
         <test-method status="PASS" signature="selectproject()[pri:2, instance:setupEnvironment.Test_Loginapplication@58134517]" name="selectproject" duration-ms="6861" started-at="2020-05-04T00:41:17 IST" finished-at="2020-05-04T00:41:24 IST">
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> b8f86073742e7155394a6e1371087699bd02f944
+=======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
