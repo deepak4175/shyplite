@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testsuite skipped="0" hostname="CTNL0025" name="setupEnvironment.Test_Loginapplication" tests="3" failures="0" timestamp="09 May 2020 17:34:19 GMT" time="98.205" errors="0">
   <testcase name="loginApplication" time="23.741" classname="setupEnvironment.Test_Loginapplication"/>
   <testcase name="selectLoginUser" time="68.888" classname="setupEnvironment.Test_Loginapplication"/>
@@ -12,6 +13,8 @@
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
 =======
 >>>>>>> b8f86073742e7155394a6e1371087699bd02f944
+=======
+>>>>>>> refs/remotes/origin/master
 <testsuite skipped="0" hostname="DESKTOP-RD79HJS" name="setupEnvironment.Test_Loginapplication" tests="3" failures="0" timestamp="2020-05-04T00:41:30 IST" time="31.684" errors="0">
   <testcase name="loginApplication" time="17.073" classname="setupEnvironment.Test_Loginapplication"/>
   <system-out/>
