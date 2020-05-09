@@ -33,6 +33,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/apache-freemarker-2.3.30-bin/apache-freemarker-2.3.30-bin/freemarker.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deepak.kumar/Downloads/chromedriver/freemarker-2.3.23.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

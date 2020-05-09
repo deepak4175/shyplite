@@ -33,18 +33,17 @@ public class UserHomeScreen extends Mainclass {
         System.out.println("Function : "+methodName+"  has started.");
 		boolean opt =false, inp= false, inp2=false, inp3=false,inp4=false; 
 	  	String projectPath="//span/p[text()='"+projectname+"']";
-	  	WebElement projectxpath=null;
+	  	boolean projectxpath=false;
 	    
 	    inp=CommonMethod.waitForObjectVisible(appLauncher, 40);
-	  	    	inp2=CommonMethod.clickOn(appLauncher);
-	    	
-	    	    boolean inp5= CommonMethod.waitForObjectVisible(ViewAllButton, 50);
-	    		if(inp5==true)
+	  	inp2=CommonMethod.clickOn(appLauncher);	    	
+	    boolean inp5= CommonMethod.waitForObjectVisible(ViewAllButton, 50);
+	    if(inp5==true)
 	    		{
 	    			inp3=CommonMethod.clickOn(ViewAllButton);
 	    			projectxpath=CommonMethod.waitForObjectVisible(projectPath, 50);
-	    			if(projectxpath!=null)
-	    			CommonMethod.clickOn(projectxpath);
+	    			if(projectxpath==true)
+	    			CommonMethod.clickOn( CommonMethod.findSingleElement(projectPath));
 	    		}
 	    		else
 	    		{
@@ -52,7 +51,7 @@ public class UserHomeScreen extends Mainclass {
 	    			CommonMethod.waitForObjectVisible(ViewAllButton, 50);
 	    			CommonMethod.clickOn(ViewAllButton);
 	    			projectxpath=CommonMethod.waitForObjectVisible(projectPath, 50);
-	    			CommonMethod.clickOn(projectxpath);
+	    			CommonMethod.clickOn(CommonMethod.findSingleElement(projectPath));
 	    		}
 	    		
 	    		

@@ -2,6 +2,7 @@ package baseClass;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
+import dataFromExcel.ExcelReader;
+
 //import basePackage.CommonMethod;
 //import basePackage.PageGenerator;
 
@@ -38,6 +41,8 @@ public class Mainclass {
 	public static FileInputStream excelPath;
 	public static XSSFWorkbook workbook;
 	public static XSSFSheet worksheet;
+	public static ExcelReader excelReader;
+	public static HashMap<String, Integer> globalVar =new HashMap<String, Integer>();
 	
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
@@ -54,19 +59,19 @@ public class Mainclass {
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
 		//System.out.println("value: "+config.getProperty("Chromedriver"));
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+config.getProperty("Chromedriver"));
 		driver=new ChromeDriver(options);
 		System.out.println("chromedriver set");
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
-	    driver.get("https://hfclcorp--hfcuat.cs76.my.salesforce.com/");
+	    driver.get(config.getProperty("URL"));
 	    
 		}else
 		if(browsername.equalsIgnoreCase("firefox"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\geckodriver.exe");
 		driver=new FirefoxDriver();
 		System.out.println("firefox  set");
 		
@@ -77,7 +82,7 @@ public class Mainclass {
 		if(browsername.equalsIgnoreCase("internetExproler"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\IEDriverServer.exe");
 		driver=new InternetExplorerDriver();
 		System.out.println("ie set");
 		

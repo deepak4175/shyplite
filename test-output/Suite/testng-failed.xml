@@ -2,18 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <parameter name="browsername" value="chrome"/>
-  <listeners>
-    <listener class-name="utilityClass.ListenerClass"/>
-  </listeners>
   <test thread-count="5" name="DefaultTest(failed)">
     <classes>
-      <class name="setupEnvironment.Test_Loginapplication">
+      <class name="roughTestPackage.RoughTest1">
         <methods>
-          <include name="loginApplication"/>
-          <include name="setup"/>
-          <include name="selectLoginUser"/>
+          <include name="Method44"/>
+          <include name="Method43"/>
+          <include name="Method45"/>
+          <include name="Method47"/>
         </methods>
-      </class> <!-- setupEnvironment.Test_Loginapplication -->
+      </class> <!-- roughTestPackage.RoughTest1 -->
     </classes>
   </test> <!-- DefaultTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

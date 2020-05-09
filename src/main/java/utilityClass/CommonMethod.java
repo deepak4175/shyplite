@@ -57,23 +57,25 @@ public class CommonMethod extends Mainclass{
 			catch(Exception e){
 				opt=false;
 				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				
 				}
+			return opt;
 	}
-	public static WebElement waitForObjectVisible(String objectAddress,int timeOutInSeconds)
-	{    WebElement opt=null;
+	public static boolean waitForObjectVisible(String objectAddress,int timeOutInSeconds)
+	{    boolean opt=true;
 		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 		 wait=new WebDriverWait(driver, timeOutInSeconds);
 			try {  System.out.println("Step : "+methodName+" execution started");
-			       opt=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectAddress)));
+			       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectAddress)));
 			       System.out.println("Step : "+methodName+" executed ssuccesfully");
-			       return opt;
+			       //return opt;
 				}
 			catch(Exception e){
-				//opt=false;
+				opt=false;
 				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				
 				}
+			return opt;
 	}
 	//navigate to URL
 	public static boolean navigate(String URL)
@@ -116,8 +118,8 @@ public class CommonMethod extends Mainclass{
 			       return opt;
 				}
 			catch(Exception e){
-				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				   System.out.println("Step : "+methodName+" Failed due to : "+e);
+				   return opt;
 				}
 	}
 	
