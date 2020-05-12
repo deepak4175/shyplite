@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+
+
   <test thread-count="5" name="Test">
+  <parameter name="Browsername" value="chrome"></parameter>
     <classes>
-      <class name="roughTestPackage.RoughTest1"/>
+      <class name="baseClass.Mainclass"/>
       <class name="setupEnvironment.Test_Loginapplication"/>
-      <class name="roughPackage.RoughBaseClass"/>
+     
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -47,7 +47,7 @@ public class Mainclass {
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
 	@Parameters("browsername")
-	@BeforeSuite
+	@BeforeTest
 	public  void setup(String browsername) throws IOException
 	{ 
 		//String browsername="chrome";
@@ -111,7 +111,7 @@ public class Mainclass {
 	void teardown()
 	{
 		System.out.println("driver close");
-		driver.close();
+		//driver.close();
 	}
 	
 	public static String functionName()
