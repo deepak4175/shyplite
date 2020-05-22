@@ -14,6 +14,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
@@ -46,6 +48,8 @@ public class Mainclass {
 	
 	public static Properties prop=new Properties(); 
 	public static Properties config=new Properties(); 
+	public static Actions action;
+	public static Select sel;
 	@Parameters("browsername")
 	@BeforeTest
 	public  void setup(String browsername) throws IOException
@@ -61,6 +65,7 @@ public class Mainclass {
 		//System.out.println("value: "+config.getProperty("Chromedriver"));
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+config.getProperty("Chromedriver"));
 		driver=new ChromeDriver(options);
+		action=new Actions(driver);
 		System.out.println("chromedriver set");
 		
 		driver.manage().window().maximize();
@@ -73,6 +78,7 @@ public class Mainclass {
 		propertysetup();
 		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\geckodriver.exe");
 		driver=new FirefoxDriver();
+		action=new Actions(driver);
 		System.out.println("firefox  set");
 		
 		driver.manage().window().maximize();
@@ -84,6 +90,7 @@ public class Mainclass {
 		propertysetup();
 		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\IEDriverServer.exe");
 		driver=new InternetExplorerDriver();
+		action=new Actions(driver);
 		System.out.println("ie set");
 		
 		driver.manage().window().maximize();

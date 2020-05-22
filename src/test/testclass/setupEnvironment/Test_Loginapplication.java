@@ -21,7 +21,7 @@ public class Test_Loginapplication extends Mainclass {
 		softAssert.assertEquals(opt1, true);
 		
 	}
-	/*@Test(dependsOnMethods= {"loginApplication"},priority=1)
+	@Test(dependsOnMethods= {"loginApplication"},priority=1)
 	void selectLoginUser() throws InterruptedException
 	{
 		boolean opt=OR_LoginPage.logInThroughUser(config.getProperty("salesUsername"));
@@ -34,6 +34,6 @@ public class Test_Loginapplication extends Mainclass {
 		opt=UserHomeScreen.selectProject(prop.getProperty("ProjectName"));
 		softAssert.assertEquals(opt, true);
 	}
-	*/
+	
 }
 
