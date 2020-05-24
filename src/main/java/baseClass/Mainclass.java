@@ -60,7 +60,7 @@ public class Mainclass {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
-	    driver.get("https://hfclcorp--hfcuat.cs76.my.salesforce.com/");
+	    driver.get("https://the-internet.herokuapp.com/nested_frames");
 	    
 		}else
 		if(browsername.equalsIgnoreCase("firefox"))
