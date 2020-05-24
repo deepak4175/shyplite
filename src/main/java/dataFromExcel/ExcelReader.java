@@ -2,6 +2,7 @@ package dataFromExcel;
 
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -9,12 +10,15 @@ import java.util.Calendar;
 import org.apache.poi.common.usermodel.HyperlinkType;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.util.HSSFColor;
-
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFCreationHelper;
@@ -23,6 +27,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import baseClass.Mainclass;
+
 
 public class ExcelReader {
 	
@@ -30,10 +36,17 @@ public class ExcelReader {
 	public  FileInputStream fis = null;
 	public  FileOutputStream fileOut =null;
 	private XSSFWorkbook workbook = null;
-	private XSSFSheet sheet = null;
+	protected XSSFSheet sheet = null;
 	private XSSFRow row   =null;
 	private XSSFCell cell = null;
+	public XSSFCellStyle style=null;
 	
+	/**
+	 * @param path
+	 */
+	/**
+	 * @param path
+	 */
 	public ExcelReader(String path) {
 		
 		this.path=path;
@@ -191,6 +204,57 @@ public class ExcelReader {
 	}
 	
 	
+	public boolean setCellData(XSSFSheet sheetName,String colName,int rowNum, String data){
+		try{
+		fis = new FileInputStream(path); 
+		workbook = new XSSFWorkbook(fis);
+
+		if(rowNum<=0)
+			return false;
+		
+		int index = workbook.getSheetIndex(sheetName);
+		int colNum=-1;
+		if(index==-1)
+			return false;
+		
+		
+		sheet = workbook.getSheetAt(index);
+		
+
+		row=sheet.getRow(0);
+		for(int i=0;i<row.getLastCellNum();i++){
+			//System.out.println(row.getCell(i).getStringCellValue().trim());
+			if(row.getCell(i).getStringCellValue().trim().equals(colName))
+				colNum=i;
+		}
+		if(colNum==-1)
+			return false;
+
+		sheet.autoSizeColumn(colNum); 
+		row = sheet.getRow(rowNum-1);
+		if (row == null)
+			row = sheet.createRow(rowNum-1);
+		
+		cell = row.getCell(colNum);	
+		if (cell == null)
+	        cell = row.createCell(colNum);
+
+	    
+	    cell.setCellValue(data);
+
+	    fileOut = new FileOutputStream(path);
+
+		workbook.write(fileOut);
+
+	    fileOut.close();	
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 	
 	
 	// returns true if data is set successfully else false
@@ -314,7 +378,23 @@ public class ExcelReader {
 		return true;
 	}
 	
-	
+	//returns true is cell does NOT have value else False
+	 public  boolean isRowEmpty(int firstCellNumb, int LastCellNumb,int rownum ) {
+		    row=sheet.getRow(rownum-1);
+			if (row == null) {
+			return true;
+			}
+			if (row.getLastCellNum() <= 0) {
+			return true;
+			}
+			for (int c = firstCellNumb; c < LastCellNumb; c++) {
+			Cell cell = row.getCell(c);
+			if (cell != null && cell.getCellType() != CellType.BLANK)
+			return false;
+			}
+			return true;
+			}
+		
 	
 	// returns true if sheet is created successfully else false
 	public boolean addSheet(String  sheetname){		
@@ -351,13 +431,56 @@ public class ExcelReader {
 		return true;
 	}
 	// returns true if column is created successfully
-	public boolean addColumn(String sheetName,String colName){
+	public boolean addColumn(Sheet sheet2,String colName, int rownumber ){
 		
 		
 		try{				
 			fis = new FileInputStream(path); 
 			workbook = new XSSFWorkbook(fis);
-			int index = workbook.getSheetIndex(sheetName);
+			int index = workbook.getSheetIndex(sheet2);
+			if(index==-1)
+				return false;
+			
+		CellStyle style = workbook.createCellStyle();
+		style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex());
+		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		
+		sheet=workbook.getSheetAt(index);
+		
+		row = sheet.getRow(rownumber);
+		if (row == null)
+			row = sheet.createRow(0);
+		
+		
+		if(row.getLastCellNum() == -1)
+			cell = row.createCell(0);
+		else
+			cell = row.createCell(row.getLastCellNum());
+	        
+	        cell.setCellValue(colName);
+	        cell.setCellStyle(style);
+	        
+	        fileOut = new FileOutputStream(path);
+			workbook.write(fileOut);
+		    fileOut.close();		    
+
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+		
+		
+	}
+	
+    public boolean addColumn(String sheet2,String colName){
+		
+		
+		try{				
+			fis = new FileInputStream(path); 
+			workbook = new XSSFWorkbook(fis);
+			int index = workbook.getSheetIndex(sheet2);
 			if(index==-1)
 				return false;
 			
@@ -381,6 +504,7 @@ public class ExcelReader {
 	        cell.setCellStyle(style);
 	        
 	        fileOut = new FileOutputStream(path);
+	        
 			workbook.write(fileOut);
 		    fileOut.close();		    
 
@@ -450,6 +574,22 @@ public class ExcelReader {
 	
 	
 	// returns number of columns in a sheet	
+	public int getColumnCount(String sheetName,  int rownumber){
+		// check if sheet exists
+		if(!isSheetExist(sheetName))
+		 return -1;
+		
+		sheet = workbook.getSheet(sheetName);
+		row = sheet.getRow(rownumber);
+		
+		if(row==null)
+			return -1;
+		
+		return row.getLastCellNum();
+		
+		
+		
+	}
 	public int getColumnCount(String sheetName){
 		// check if sheet exists
 		if(!isSheetExist(sheetName))
@@ -462,10 +602,10 @@ public class ExcelReader {
 			return -1;
 		
 		return row.getLastCellNum();
-		
-		
-		
 	}
+	
+	
+		
 	
 	
 	//String sheetName, String testCaseName,String keyword ,String URL,String message
@@ -514,5 +654,103 @@ public class ExcelReader {
 				}
 	}
 	
+	public boolean getmergedcellValue(String methodName)
+	{  int  NumberOfMergedRegion=sheet.getNumMergedRegions(); 
+		String opt[]=new String[NumberOfMergedRegion];
+	     boolean methodExist=false;
+		 for (int i = 0;   i < NumberOfMergedRegion;i++)
+		 { CellRangeAddress region = sheet.getMergedRegion(i);  //
+			 int colIndex = region.getFirstColumn();  //First column position of merge area
+			 int rowNum = region.getFirstRow();  //position of first line of merge area
+			// System.out.println ("the ["+i+ "] merge area:" + sheet.getRow (rowNum). getCell (colIndex). getStringCellValue ());
+			 opt[i]=sheet.getRow (rowNum). getCell (colIndex). getStringCellValue ();
+			 if(opt[i]==null||opt[i].isEmpty())
+				 continue;
+			 if(opt[i].equalsIgnoreCase(methodName)) {
+				 methodExist=true;
+			  String ColumnNumb=String.valueOf(colIndex);
+			  Mainclass.prop.setProperty("FirstColumnNumberofMatchedMethod",ColumnNumb);
+			  Mainclass.globalVar.put("FirstIndexColumn", colIndex);
+			 }
+		  }
+		 return methodExist;
+			 
+	}
+	public String[]  getmergedcellValue()
+	{    String opt[]=null;
+		 for (int i = 0;   i < sheet.getNumMergedRegions();i++)
+		 { CellRangeAddress region = sheet.getMergedRegion(i);  //
+			 int colIndex = region.getFirstColumn();  //First column position of merge area
+			 int rowNum = region.getFirstRow();  //position of first line of merge area
+			// System.out.println ("the ["+i+ "] merge area:" + sheet.getRow (rowNum). getCell (colIndex). getStringCellValue ());
+			 opt[i]=sheet.getRow (rowNum). getCell (colIndex). getStringCellValue ();
+			
+		  }
+		 return opt;
+			 
+	}
+	 
+	
+	public boolean setDataInMergedCell(String inputvalue,int firstRow, int lastRow,int  firstCol,int lastCol) throws IOException
+	{  boolean opt=true;
+	   try {
+		row = sheet.getRow(firstRow);
+		   if(row==null)
+		   {
+			   row=sheet.createRow(firstRow);
+		   }
+		   style=workbook.createCellStyle();
+		   style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREY_40_PERCENT.getIndex());
+		   style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		   cell = row.createCell(firstCol);
+		   cell.setCellStyle(style);
+		   cell.setCellValue(inputvalue);
+		   CellRangeAddress cellRangeAddress = new CellRangeAddress(firstRow, lastRow, firstCol, lastCol);
+		   sheet.addMergedRegion(cellRangeAddress);
+		   fileOut = new FileOutputStream(path);
+		    workbook.write(fileOut);
+		    fileOut.flush();
+		    fileOut.close();
+	        } catch (Exception e) {
+		// TODO Auto-generated catch block
+		      opt=false;
+		      e.printStackTrace();
+	        }
+	    return opt;
+	  }
+	
+	public boolean setValueinCell(XSSFSheet sheet,int rownum,int colnum,String cellValue ) 
+	{
+		boolean opt=true;
+		   try {
+			row = sheet.getRow(rownum);
+			   if(row==null)
+			   {
+				   row=sheet.createRow(rownum);
+			   }
+			   style=workbook.createCellStyle();
+			   style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.BRIGHT_GREEN.getIndex());
+			   style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+			   cell = row.createCell(colnum);
+			   cell.setCellStyle(style);
+			   cell.setCellValue(cellValue);
+			   fileOut = new FileOutputStream(path);
+			    workbook.write(fileOut);
+			    fileOut.flush();
+			    fileOut.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			opt=false;
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			opt=false;
+			e.printStackTrace();
+		}
+		   return opt;
+		  
+		
+	}
+
 	
 }

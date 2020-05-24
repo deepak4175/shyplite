@@ -2,8 +2,10 @@ package utilityClass;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import baseClass.Mainclass;
@@ -57,23 +59,25 @@ public class CommonMethod extends Mainclass{
 			catch(Exception e){
 				opt=false;
 				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				
 				}
+			return opt;
 	}
-	public static WebElement waitForObjectVisible(String objectAddress,int timeOutInSeconds)
-	{    WebElement opt=null;
+	public static boolean waitForObjectVisible(String objectAddress,int timeOutInSeconds)
+	{    boolean opt=true;
 		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 		 wait=new WebDriverWait(driver, timeOutInSeconds);
 			try {  System.out.println("Step : "+methodName+" execution started");
-			       opt=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectAddress)));
+			       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(objectAddress)));
 			       System.out.println("Step : "+methodName+" executed ssuccesfully");
-			       return opt;
+			       //return opt;
 				}
 			catch(Exception e){
-				//opt=false;
+				opt=false;
 				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				
 				}
+			return opt;
 	}
 	//navigate to URL
 	public static boolean navigate(String URL)
@@ -116,8 +120,8 @@ public class CommonMethod extends Mainclass{
 			       return opt;
 				}
 			catch(Exception e){
-				System.out.println("Step : "+methodName+" Failed due to : "+e);
-				return opt;
+				   System.out.println("Step : "+methodName+" Failed due to : "+e);
+				   return opt;
 				}
 	}
 	
@@ -177,7 +181,7 @@ public class CommonMethod extends Mainclass{
 		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 			try {  System.out.println("Step : "+methodName+" execution started");
 			       driver.switchTo().defaultContent();
-			       System.out.println("Step : "+methodName+" executed ssuccesfully");
+			       System.out.println("Step : "+methodName+" executed ssuccessfully");
 			       return opt;
 				}
 			catch(Exception e){
@@ -186,13 +190,111 @@ public class CommonMethod extends Mainclass{
 				}
 	}
 	
+	public static boolean selectDropdownByVisibleText(WebElement ele, String input)
+
+	{
+		boolean opt=true;
+		 String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
+			try {  System.out.println("Step : "+methodName+" execution started");		
+				   sel=new Select(ele);
+				   sel.selectByVisibleText(input);
+			       System.out.println("Step : "+methodName+" executed successfully");
+			       return opt;
+				}
+			catch(Exception e){
+				System.out.println("Step : "+methodName+" Failed due to : "+e);
+				return opt;
+				}
+	}
+
+
+	public static boolean pressEnterKey()
+	{boolean opt=true;
+	  try {
+		Mainclass.action.sendKeys(Keys.ENTER).build().perform();
+	  	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	  	return opt;
+	}
 	
-	
-	
-	
+	public static boolean pressKey(String input, int numberOfTimes )
+	{boolean opt=true;
+	 String keysName=input.toLowerCase().trim();
+	  try {
+		  
+	switch (keysName) {
+	case "enter":
+		       for(int i=0;i<numberOfTimes;i++) {
+		        Mainclass.action.sendKeys(Keys.ENTER).build().perform();
+		       }break;
+	case "pageup":
+		       for(int i=0;i<numberOfTimes;i++) {
+                Mainclass.action.sendKeys(Keys.ARROW_UP).build().perform();
+		       }break;
+	case "pagedown":
+	           for(int i=0;i<numberOfTimes;i++) {
+        		Mainclass.action.sendKeys(Keys.ARROW_DOWN).build().perform();
+	        	 }break;
+	case "backspace":
+		       for(int i=0;i<numberOfTimes;i++) {
+                Mainclass.action.sendKeys(Keys.BACK_SPACE).build().perform();   
+		       }break;
+	case "rightarrow":
+			  for(int i=0;i<numberOfTimes;i++) {
+				Mainclass.action.sendKeys(Keys.ARROW_RIGHT).build().perform();
+			  }	break;
+	case "leftarrow":
+		      for(int i=0;i<numberOfTimes;i++) {
+				Mainclass.action.sendKeys(Keys.ARROW_LEFT).build().perform();
+		      }break;
+	case "arrowright":
+		      for(int i=0;i<numberOfTimes;i++) {
+				Mainclass.action.sendKeys(Keys.ARROW_RIGHT).build().perform();
+		      }break;
+	case "arrowleft":
+	      	 for(int i=0;i<numberOfTimes;i++) {
+				Mainclass.action.sendKeys(Keys.ARROW_LEFT).build().perform();
+	      	 }
+	      	break;
+		
+		
+
+	default:
+		    System.out.println(" valid key for this function is enter, pageup, pagedown, backspace, rightarrow, leftarrow");
+		break;
+	}
+		Mainclass.action.sendKeys(Keys.ENTER).build().perform();
+	  	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	  	return opt;
+	}
+
+	public static void pressTwokey(String key1,String key2)
+	{String opt=key1.trim().toLowerCase();
+	  try {
+		  
+		  switch (opt) {
+		case "ctrl":
+			         Mainclass.action.sendKeys(Keys.chord(Keys.CONTROL,key2)).build().perform();
+			         break;
+		case "control":
+					Mainclass.action.sendKeys(Keys.chord(Keys.CONTROL,key2)).build().perform();
+					break;
 			
-		
-		
-	
-	
+			
+
+		default:
+			break;
+		}
+	            
+	  	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	  	
+	}
 }

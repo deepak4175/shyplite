@@ -1,1 +1,4 @@
 /target/
+test-output/*
+src/test/resources/testOutput/*
+testng.xml.orig

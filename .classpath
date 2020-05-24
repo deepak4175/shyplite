@@ -15,7 +15,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -33,6 +33,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Admin/Downloads/apache-freemarker-2.3.30-bin/apache-freemarker-2.3.30-bin/freemarker.jar"/>
+	<classpathentry kind="lib" path="C:/Users/deepak.kumar/Downloads/chromedriver/freemarker-2.3.23.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

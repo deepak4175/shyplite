@@ -76,17 +76,16 @@ public class OR_LoginPage extends Mainclass {
 			    {
 				  CommonMethod.typeTextOnEditBox(UserInputBox, input);
 				  String UserXpath="//div[contains(text(),'"+input+"')]";
-				  WebElement objectXpath=CommonMethod.findSingleElement(UserXpath);
-				  inp2=CommonMethod.waitForObjectVisible(objectXpath, 20);
+				  inp2=CommonMethod.waitForObjectVisible(UserXpath, 20);
 				  if(inp2==true)
 				  {
+					 WebElement objectXpath=CommonMethod.findSingleElement(UserXpath);
 					 CommonMethod.clickOn(objectXpath);
 					 Thread.sleep(5000);
-					  String UserLoginframeXpath="//iframe[contains(@title,'"+input+"')]";
-					  WebElement Frameloded=CommonMethod.findSingleElement(UserLoginframeXpath);
-					  inp4=CommonMethod.waitForObjectVisible(Frameloded, 40);
-					  if(inp4==true)
-					  {
+					 String UserLoginframeXpath="//iframe[contains(@title,'"+input+"')]";
+					 inp4=CommonMethod.waitForObjectVisible(UserLoginframeXpath, 40);
+					 if(inp4==true)
+					  {   WebElement Frameloded=CommonMethod.findSingleElement(UserLoginframeXpath);
 						  CommonMethod.switchToFramebyxpath(Frameloded);
 						  inp6=CommonMethod.waitForObjectVisible(SetupUserLoginButton, 40);
 						 
@@ -101,9 +100,9 @@ public class OR_LoginPage extends Mainclass {
 			     }
 		  	  
 	         if(inp==true&&inp2==true&&inp4==true&&inp6==true&&inp7==true)
-				{opt=true;}
+				opt=true;
 	         else
-	         {opt=false;}
+	         opt=false;
 		    return opt;
 		 }
 		  
