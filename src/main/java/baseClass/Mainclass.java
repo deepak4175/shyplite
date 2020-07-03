@@ -1,3 +1,5 @@
+
+
 package baseClass;
 
 import java.io.FileInputStream;
@@ -51,10 +53,9 @@ public class Mainclass {
 	public static Actions action;
 	public static Select sel;
 	@Parameters("browsername")
-	@BeforeTest
+	@BeforeSuite
 	public  void setup(String browsername) throws IOException
 	{ 
-		//String browsername="chrome";
 		System.out.println("setup method started");
 		
 		if(browsername.equalsIgnoreCase("chrome"))
@@ -62,49 +63,43 @@ public class Mainclass {
 		propertysetup();
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--disable-notifications");
-		//System.out.println("value: "+config.getProperty("Chromedriver"));
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+config.getProperty("Chromedriver"));
 		driver=new ChromeDriver(options);
 		action=new Actions(driver);
-		System.out.println("chromedriver set");
-		
+		System.out.println("chromedriver set");	
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);  
-
-	    driver.get(config.getProperty("URL"));
-
-	    
-		}else
+	    driver.get(config.getProperty("LoginURL"));
+	    }else
+	    	
 		if(browsername.equalsIgnoreCase("firefox"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+config.getProperty("firefox"));
 		driver=new FirefoxDriver();
 		action=new Actions(driver);
 		System.out.println("firefox  set");
-		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);  
-	    driver.get("https://hfclcorp--hfcuat.cs76.my.salesforce.com/");
+		driver.get(config.getProperty("LoginURL"));
 		}else
+			
 		if(browsername.equalsIgnoreCase("internetExproler"))
 		{
 		propertysetup();
-		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+"\\src\\main\\MainResources\\ExecutableDriver\\IEDriverServer.exe");
+		System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+config.getProperty("IE"));
 		driver=new InternetExplorerDriver();
 		action=new Actions(driver);
 		System.out.println("ie set");
-		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);  
-	    driver.get("https://hfclcorp--hfcuat.cs76.my.salesforce.com/");
+	    driver.get(config.getProperty("LoginURL"));
 		}
 		else
 		{
 			System.out.println("inserted input is not supported browser");
 		}
-	//	page1=new PageGenerator(driver);
-	//	commonMethod=new CommonMethod();
+	
 	
 		
 	}
@@ -127,11 +122,6 @@ public class Mainclass {
 	{
 		return new Object() {}.getClass().getEnclosingMethod().getName();
 	}
-	/*public static void main(String args[]) throws IOException
-	{
-		Mainclass ob1=new Mainclass();
-		ob1.setup();
-	}*/
 	
 	
 

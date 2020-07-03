@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+<parameter name="browsername" value="chrome"/>
+
 <listeners>
 		<listener class-name="utilityClass.ListenerClass" />
 	</listeners>
-<parameter name="browsername" value="chrome"/>
-  <test  name="DefaultTest">
+
+  <test  name="DefaultTest" preserve-order="true">
     <classes>
       <class name="baseClass.Mainclass"/>
       <class name="setupPages.OR_LoginPage"/>
-       <class name="setupPages.UserHomeScreen"/>
+      <class name="setupPages.RegScreen"/>
     </classes>
   </test> <!-- Test -->
    <test  name="MainFlow">
     <classes>
-      <class name="setupEnvironment.Test_Loginapplication"/>
+    <class name="setupEnvironment.Test_Loginapplication"/>
+    <class name="setupEnvironment.Test_RegScreen"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,9 +1,8 @@
 package setupPages;
 
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -15,103 +14,64 @@ import utilityClass.CommonMethod;
 public class OR_LoginPage extends Mainclass {
 	
 	
-	@FindBy(how=How.XPATH, using="//input[@id='username']")
-			//xpath="//input[@id='username']")
-	static WebElement username;
+	@FindBy(xpath="//input[@name='emailID']")
+	 static WebElement username;
 	
-	@FindBy(xpath="//input[@id='password']")
+	@FindBy(xpath="//input[@name='password']")
 	static WebElement password;
 	
-	@FindBy(xpath="//input[@id='Login']")
+	@FindBy(xpath="//button[text()='Log In']")
 	static WebElement LoginButton;
 	
-	@FindBy(xpath="//a//div[@title='New']")
-	static WebElement NewApplication;
+	@FindBy(xpath="//div[text()='Incorrect emailID or password. Please try again.']")
+	static WebElement errormessage;
 	
-	@FindBy(xpath="//input[@placeholder='Search Salesforce']")
-	static WebElement SearchBox;
 	
-	@FindBy(xpath="//input[@placeholder='Search Setup']")
-	static WebElement UserInputBox;
+	@FindBy(xpath="//a[text()='Forgot your password?']")
+	static WebElement forgotPassword;
 	
-	@FindBy(xpath="//td[@id='topButtonRow']//input[@title='Login']")
-	static WebElement SetupUserLoginButton;
+	@FindBy(xpath="//a[text()='Sign up']")
+	static WebElement SignUp;
 	
 	
 	@BeforeTest
-	public static void OR_setupLoginPage()
-	{   System.out.println("page object initialize");
+	public void OR_setupLoginPage()
+	{   System.out.println("page object initialize:  "+new Object() {}.getClass().getName());
 		PageFactory.initElements(driver,OR_LoginPage.class);
+		
 	}
-	public static boolean logintoApplication()
+	public static boolean logintoApplicationwithinvalidCredential()
 	{  boolean finalresult=false;  
 	   String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 	   System.out.println("Function : "+methodName+"  has started.");
-	   boolean inp1=CommonMethod.typeTextOnEditBox(username, Mainclass.config.getProperty("username"));	   
-	   boolean inp2=CommonMethod.typeTextOnEditBox(password, Mainclass.config.getProperty("password"));
+	   boolean inp1=CommonMethod.typeTextOnEditBox(username, config.getProperty("username"));	   
+	   boolean inp2=CommonMethod.typeTextOnEditBox(password, config.getProperty("password"));
 	   boolean inp3=CommonMethod.clickOn(LoginButton);
-	   boolean inp4=CommonMethod.waitForObjectVisible(SearchBox,50);
-	   boolean inp5=CommonMethod.clickOn(SearchBox);
-	   if(inp1==true&&inp2==true&&inp3==true&& inp4==true &&inp5==true)
+	   boolean inp4=CommonMethod.ElementDisplayedOnScreen(errormessage);
+	   
+	  	   if(inp1==true&&inp2==true&&inp3==true&&inp4==true)
 	   {
 		   finalresult=true;
 	   }
 	   return finalresult;
 	  }
-	   public static boolean navigateToSetup()
+	   public static boolean navigateToforgotpassword()
 	  { String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
 	     System.out.println("Function : "+methodName+"  has started.");
-		boolean inp=CommonMethod.navigate(config.getProperty("setupURL"));
+		boolean inp=CommonMethod.ElementDisplayedOnScreen(forgotPassword);
 		return inp;
 		 
 	  }
 	   
-	  public static boolean logInThroughUser(String input) throws InterruptedException
-	  {    String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
-	       System.out.println("Function : "+methodName+"  has started.");
-		  boolean opt,inp2 = false,inp4 = false,inp6 = false,inp7 = false;
-			    boolean inp=CommonMethod.waitForObjectVisible(UserInputBox, 40);
-			    Thread.sleep(5000);
-			    if(inp==true)
-			    {
-				  CommonMethod.typeTextOnEditBox(UserInputBox, input);
-				  String UserXpath="//div[contains(text(),'"+input+"')]";
-				  inp2=CommonMethod.waitForObjectVisible(UserXpath, 20);
-				  if(inp2==true)
-				  {
-					 WebElement objectXpath=CommonMethod.findSingleElement(UserXpath);
-					 CommonMethod.clickOn(objectXpath);
-					 Thread.sleep(5000);
-					 String UserLoginframeXpath="//iframe[contains(@title,'"+input+"')]";
-					 inp4=CommonMethod.waitForObjectVisible(UserLoginframeXpath, 40);
-					 if(inp4==true)
-					  {   WebElement Frameloded=CommonMethod.findSingleElement(UserLoginframeXpath);
-						  CommonMethod.switchToFramebyxpath(Frameloded);
-						  inp6=CommonMethod.waitForObjectVisible(SetupUserLoginButton, 40);
-						 
-						  if(inp6==true)
-						  {  CommonMethod.clickOn(SetupUserLoginButton);
-						     CommonMethod.switchToDefaultFrame();
-						  	 Thread.sleep(7000);
-						     inp7=CommonMethod.waitForObjectVisible(SearchBox, 40);
-						  }
-					  }
-				   }
-			     }
-		  	  
-	         if(inp==true&&inp2==true&&inp4==true&&inp6==true&&inp7==true)
-				opt=true;
-	         else
-	         opt=false;
-		    return opt;
-		 }
-		  
-	     
-		  
-	  
-	
-	  
+	   public static boolean navigateToSignUP()
+		  { String methodName=new Object() {}.getClass().getEnclosingMethod().getName();
+		     System.out.println("Function : "+methodName+"  has started.");
+			boolean inp=CommonMethod.ElementDisplayedOnScreen(SignUp);
+			return inp;
+			 
+		  }
 	   
+	  
 	    
         
 	}

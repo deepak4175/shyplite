@@ -6,33 +6,32 @@ import org.testng.annotations.Test;
 
 import baseClass.Mainclass;
 import setupPages.OR_LoginPage;
-import setupPages.UserHomeScreen;
+import setupPages.RegScreen;
 
 public class Test_Loginapplication extends Mainclass {
-	
+	//OR_LoginPage loginpage=new OR_LoginPage();
 	@Test(priority=0)
 	void loginApplication()
 	{   
 	   
 		//OR_LoginPage.OR_setupLoginPage();
-		boolean opt=OR_LoginPage.logintoApplication();
+		boolean opt=OR_LoginPage.logintoApplicationwithinvalidCredential();
 		softAssert.assertEquals(opt, true);
-		boolean opt1=OR_LoginPage.navigateToSetup();
-		softAssert.assertEquals(opt1, true);
+		
 		
 	}
 	@Test(dependsOnMethods= {"loginApplication"},priority=1)
-	void selectLoginUser() throws InterruptedException
+	void forgotPAssword() throws InterruptedException
 	{
-		boolean opt=OR_LoginPage.logInThroughUser(config.getProperty("salesUsername"));
-		softAssert.assertEquals(opt, true);
+		boolean opt1=OR_LoginPage.navigateToforgotpassword();
+		softAssert.assertEquals(opt1, true);
 	}
 	
 	@Test(priority=2)
-	void selectproject()
+	void signUpScreen()
 	{boolean opt=false;
-		opt=UserHomeScreen.selectProject(prop.getProperty("ProjectName"));
-		softAssert.assertEquals(opt, true);
+	boolean opt1=OR_LoginPage.navigateToSignUP();
+	softAssert.assertEquals(opt1, true);
 	}
 	
 }
